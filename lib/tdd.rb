@@ -1,5 +1,4 @@
-require 'tdd/version'
-require 'tdd/ch03/conversor_de_numero_romano'
+Gem.find_files('tdd/**/*.rb').each { |path| require path }
 
 # Tdd
 module Tdd
