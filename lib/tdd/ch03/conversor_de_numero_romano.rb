@@ -11,6 +11,15 @@ class ConversorDeNumeroRomano
   }.freeze
 
   def converte(numero_em_romano)
-    numero_em_romano.split('').map { |digito| TABELA[digito] }.reduce(&:+)
+    ultimo_vizinho_da_direita = 0
+    numero_em_romano.split('')
+                    .map { |digito| TABELA[digito] }
+                    .reverse
+                    .reduce(0) do |acumulador, digito|
+      multiplicador = digito < ultimo_vizinho_da_direita ? -1 : 1
+      # atualiza o vizinho da direita
+      ultimo_vizinho_da_direita = digito
+      acumulador + (digito * multiplicador)
+    end
   end
 end
