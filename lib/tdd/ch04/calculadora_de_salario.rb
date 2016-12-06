@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # CalculadoraDeSalario
 class CalculadoraDeSalario
   def calcula_salario(funcionario)

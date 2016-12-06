@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # Funcionario
 class Funcionario
   attr_reader :nome, :salario, :cargo
