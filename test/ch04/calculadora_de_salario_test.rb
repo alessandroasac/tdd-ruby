@@ -29,4 +29,13 @@ class CalculadoraDeSalarioTest < Minitest::Test
 
     assert_equal 500 * 0.85, salario
   end
+
+  def test_deve_calcular_salario_para_dbas_acom_salario_acima_do_limite
+    calculadora = CalculadoraDeSalario.new
+    desenvolvedor = Funcionario.new('Alessandro', 4_500.0, Cargo::DBA)
+
+    salario = calculadora.calcula_salario(desenvolvedor)
+
+    assert_equal 4_500 * 0.75, salario
+  end
 end

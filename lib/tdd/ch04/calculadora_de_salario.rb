@@ -1,11 +1,18 @@
 # frozen_string_literal: true
+
 # CalculadoraDeSalario
 class CalculadoraDeSalario
   def calcula_salario(funcionario)
-    if funcionario.cargo == Cargo::DESENVOLVEDOR
-      return funcionario.salario * 0.8 if funcionario.salario > 3_000
-      return funcionario.salario * 0.9
+    if salario_acima_do_limite(funcionario)
+      porcentagem = funcionario.cargo[:porcentagem_acima_do_limite]
+    else
+      porcentagem = funcionario.cargo[:porcentagem_base]
     end
-    funcionario.salario * 0.85
+
+    funcionario.salario * porcentagem
+  end
+
+  def salario_acima_do_limite(funcionario)
+    funcionario.salario > funcionario.cargo[:limite]
   end
 end
